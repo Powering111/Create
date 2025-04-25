@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -18,9 +19,13 @@ public class Player : Mortal
     bool has_moveto = false;
     Vector2 moveto;
 
+    NavMeshAgent agent;
+
     private new void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
         base.Awake();
     }
 
@@ -43,8 +48,9 @@ public class Player : Mortal
                 // TODO: pathfind
                 velocity = direction.normalized;
             }
+            
         }
-
+        if(!has_moveto)
         rb.MovePosition(rb.position + velocity * Time.deltaTime * speed);
     }
 
@@ -85,6 +91,8 @@ public class Player : Mortal
             has_moveto = true;
             moveto = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+            agent.SetDestination(moveto);
+            
             flag_go.SetActive(false);
             flag_go.transform.position = moveto;
             flag_go.SetActive(true);
