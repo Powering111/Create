@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2185495186333948444}
   - component: {fileID: 4827278511854397229}
   - component: {fileID: 4548302582333177564}
-  - component: {fileID: 692616596114810862}
   - component: {fileID: -5001886300194938971}
+  - component: {fileID: 1663141374933377365}
   m_Layer: 7
-  m_Name: woojun
+  m_Name: MagmaStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8cf8a798971c55946a9a7bb719e6397c, type: 3}
+  m_Sprite: {fileID: 1979344358, guid: 5747e07f3506997489456c1411728026, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,30 +144,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.56
---- !u!114 &692616596114810862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3593738967739092674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebe90cc2bba9c1d468223c9d99127850, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  max_health: 100
-  health_bar: {fileID: 4543982151356121444}
-  speed: 1
-  move_range: 2
-  recognition_range: 10
+  m_Radius: 0.28
 --- !u!50 &-5001886300194938971
 Rigidbody2D:
   serializedVersion: 5
@@ -176,14 +158,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3593738967739092674}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -194,7 +176,24 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 4
+--- !u!114 &1663141374933377365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593738967739092674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895ff8cdc30c5254f9ffb04283f90237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  max_health: 100
+  health_bar: {fileID: 4543982151356121444}
+  recognition_range: 10
+  movement_speed: 1.5
 --- !u!1001 &7260503271212564158
 PrefabInstance:
   m_ObjectHideFlags: 0

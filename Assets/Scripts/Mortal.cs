@@ -3,16 +3,18 @@ using UnityEngine.Events;
 
 public abstract class Mortal : MonoBehaviour
 {
-    [SerializeField] protected int health;
+    [SerializeField] protected int health = 100;
     [SerializeField] protected int max_health = 100;
     protected Animator animator;
     int anim_beinghit = Animator.StringToHash("beinghit");
     int anim_pop = Animator.StringToHash("pop");
     bool getting_damage = false;
     protected bool active = true;
+    protected Rigidbody2D rb;
 
-    void Awake()
+    protected void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = max_health;
     }

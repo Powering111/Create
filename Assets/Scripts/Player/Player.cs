@@ -11,12 +11,18 @@ public class Player : Mortal
     [SerializeField] float Q_cooldown = 0.8f;
 
     [SerializeField] PlayerBar player_health_bar;
-
+    
     public float speed = 1.0f;
     Vector2 velocity = Vector2.zero;
 
     bool has_moveto = false;
     Vector2 moveto;
+
+    private new void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        base.Awake();
+    }
 
     void FixedUpdate()
     {
@@ -39,7 +45,7 @@ public class Player : Mortal
             }
         }
 
-        transform.Translate(velocity * Time.deltaTime * speed);
+        rb.MovePosition(rb.position + velocity * Time.deltaTime * speed);
     }
 
     void Update()
@@ -88,11 +94,8 @@ public class Player : Mortal
     public void Move(InputAction.CallbackContext cc)
     {
         if (!active) return;
-        if (cc.phase == InputActionPhase.Started)
-        {
-            has_moveto = false;
-            velocity = cc.ReadValue<Vector2>();
-        }
+        has_moveto = false;
+        velocity = cc.ReadValue<Vector2>();
     }
 
     public void Stop(InputAction.CallbackContext cc)
