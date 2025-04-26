@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerSkill_W : PlayerSkill
+public class PlayerSkill_catapult: PlayerSkill
 {
     [SerializeField] GameObject bubble_quadratic;
     [SerializeField] GameObject hint_w_splash, hint_w_reach;

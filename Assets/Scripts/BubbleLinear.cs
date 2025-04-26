@@ -37,10 +37,15 @@ public class BubbleLinear : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (active && collidable && collision.gameObject.layer == 7)
+        if (active)
         {
-            Damage(collision.gameObject);
-            Pop();
+            print($"collision with {collision}");
+            if (collision.gameObject.layer == 7 || collision.gameObject.layer == 8)
+            {
+                // enemy or wall
+                Damage(collision.gameObject);
+                Pop();
+            }
         }
     }
 }

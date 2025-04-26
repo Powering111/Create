@@ -6,11 +6,12 @@ public class Projectile : MonoBehaviour
     Animator animator;
     int anim_pop = Animator.StringToHash("Pop");
 
-    protected bool active = true, collidable = true;
+    protected bool active = true;
 
     public void Init(int power = 10)
     {
         this.power = power;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -2);
     }
     private void Awake()
     {
@@ -22,7 +23,6 @@ public class Projectile : MonoBehaviour
         // this animation will destroy gameObject on exit.
         animator.SetBool(anim_pop, true);
         active = false;
-        collidable = false;
     }
 
     protected void Damage(GameObject target)

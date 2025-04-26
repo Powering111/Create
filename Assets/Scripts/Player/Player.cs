@@ -1,22 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player : Mortal
 {
-    int anim_moving = Animator.StringToHash("moving");
-    int anim_direction = Animator.StringToHash("direction");
     [SerializeField] GameObject bubble_linear;
     [SerializeField] GameObject flag_go;
-    [SerializeField] float Q_cooldown = 0.8f;
 
     [SerializeField] PlayerBar player_health_bar;
-    
+
+    [SerializeField] PlayerSkill[] playerSkills;
+
     public float speed = 1.0f;
     Vector2 velocity = Vector2.zero;
 
     bool has_moveto = false;
     Vector2 moveto;
+
+    int anim_moving = Animator.StringToHash("moving");
+    int anim_direction = Animator.StringToHash("direction");
 
     private new void Awake()
     {
@@ -91,11 +92,11 @@ public class Player : Mortal
         }
     }
 
-    public void Move(InputAction.CallbackContext cc)
+    public void Move(Vector2 velocity)
     {
         if (!active) return;
         has_moveto = false;
-        velocity = cc.ReadValue<Vector2>();
+        this.velocity = velocity;
     }
 
     public void Stop(InputAction.CallbackContext cc)
@@ -110,7 +111,14 @@ public class Player : Mortal
         }
     }
 
-
+    public void StartSkill(int skill_idx)
+    {
+        playerSkills[skill_idx].action_start();
+    }
+    public void EndSkill(int skill_idx)
+    {
+        playerSkills[skill_idx].action_end();
+    }
     protected override void OnDamage()
     {
         player_health_bar.set_rate((float)health / (float)max_health);

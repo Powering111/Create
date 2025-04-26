@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class PlayerSkill_Q : PlayerSkill
+public class PlayerSkill_smallbubble : PlayerSkill
 {
     [SerializeField] GameObject bubble_linear;
     public override void action_start()
     {
         if (Available())
         {
-
             Vector2 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             use_skill(mouse_pos);
-
         }
     }
     public override void action_end()
@@ -25,8 +23,6 @@ public class PlayerSkill_Q : PlayerSkill
     {
 
     }
-
-
     protected override void use_skill(Vector2 pos)
     {
         // shoot small bubble

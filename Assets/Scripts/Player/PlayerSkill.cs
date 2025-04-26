@@ -65,16 +65,4 @@ public abstract class PlayerSkill : MonoBehaviour
 
     // called when input key is released
     public abstract void action_end();
-
-    public void InputAction(InputAction.CallbackContext cc)
-    {
-        if (cc.phase == InputActionPhase.Started)
-        {
-            action_start();
-        }
-        else if(cc.phase == InputActionPhase.Canceled)
-        {
-            action_end();
-        }
-    }
 }
